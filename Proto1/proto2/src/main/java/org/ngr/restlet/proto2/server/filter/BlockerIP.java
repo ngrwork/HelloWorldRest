@@ -22,7 +22,8 @@ public class BlockerIP extends Filter {
 	protected int beforeHandle(Request request, Response response) {
 		int result = STOP;
 		if (getBlockAddress().contains(request.getClientInfo().getAddress())) {
-			response.setStatus(Status.CLIENT_ERROR_FORBIDDEN);
+			response.setStatus(Status.CLIENT_ERROR_FORBIDDEN, "Ton IP est bloque");
+			
 		} else {
 			result = CONTINUE;
 		}
