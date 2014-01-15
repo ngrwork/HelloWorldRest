@@ -22,7 +22,10 @@ public class MailServerApplication extends Application
     }
     
     public MailServerApplication() {
-
+    	setName("RESTful Web server");
+    	setDescription("Exemple for 'Restlet in action' book");
+    	setOwner("MY FIRM");
+    	setAuthor("ME");
     }
     @Override
     public Restlet createInboundRoot() {
