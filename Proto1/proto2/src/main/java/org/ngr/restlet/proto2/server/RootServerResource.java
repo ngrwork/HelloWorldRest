@@ -1,7 +1,7 @@
 package org.ngr.restlet.proto2.server;
 
-import org.restlet.representation.Representation;
-import org.restlet.representation.StringRepresentation;
+import org.restlet.resource.Get;
+import org.restlet.resource.Options;
 import org.restlet.resource.ResourceException;
 import org.restlet.resource.ServerResource;
 
@@ -10,7 +10,7 @@ public class RootServerResource extends ServerResource {
 	public RootServerResource() {
 		super();
 		setNegotiated(false);
-		setExisting(false);
+		//setExisting(false);
 	}
 	
 	@Override
@@ -27,16 +27,18 @@ public class RootServerResource extends ServerResource {
 	protected void doRelease() throws ResourceException {
 		getLogger().fine("The root resource was release");
 	}
+
 	
-	@Override
-	protected Representation get() throws ResourceException {
-		getLogger().fine("The GET method of root resource was invoked");
-		return new StringRepresentation("This is the root repource");
+	@Get("txt")
+	public String represent() {
+		getLogger().fine("The GET method2 of root resource was invoked");
+		return "This is the root resource";
 	}
 	
-	@Override
-	protected Representation options() throws ResourceException {
+	@Options("txt")
+	public String describe() {
 		getLogger().fine("The OPTIONS method of root resource was invoked");
 		throw new RuntimeException("This is the root repource");
 	}
+	
 }
