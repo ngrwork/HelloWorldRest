@@ -21,10 +21,13 @@ public class BlockerIP extends Filter {
 	@Override
 	protected int beforeHandle(Request request, Response response) {
 		int result = STOP;
-		if (getBlockAddress().contains(request.getClientInfo().getAddress())) {
+		String address = request.getClientInfo().getAddress();
+		if (getBlockAddress().contains(address)) {
 			response.setStatus(Status.CLIENT_ERROR_FORBIDDEN, "Ton IP est bloque");
 			
 		} else {
+			getLogger().fine("IP passante :"+
+					address);
 			result = CONTINUE;
 		}
 		return result;
