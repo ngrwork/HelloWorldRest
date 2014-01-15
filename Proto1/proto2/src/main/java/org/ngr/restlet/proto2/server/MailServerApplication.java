@@ -1,5 +1,7 @@
 package org.ngr.restlet.proto2.server;
 
+import org.ngr.restlet.proto2.server.filter.BlockerIP;
+import org.ngr.restlet.proto2.server.restlet.Tracer;
 import org.restlet.Application;
 import org.restlet.Request;
 import org.restlet.Response;
@@ -29,17 +31,12 @@ public class MailServerApplication extends Application
     }
     @Override
     public Restlet createInboundRoot() {
-    	return new Restlet() {
-    		@Override
-    		public void handle(Request request, Response response) {
-    			String entity = "Method :"+request.getMethod()
-    					+ "\nResource URI : " + request.getResourceRef()
-    					+ "\nIP address :" + request.getClientInfo().getAddress()
-    					+ "\nAgent Name : "+ request.getClientInfo().getAgentName()
-    					+ "\nAgent Version :"+ request.getClientInfo().getAgentVersion();
-    			response.setEntity(entity,MediaType.TEXT_PLAIN);
-     		}
-		};
+    	BlockerIP restlet = new BlockerIP(getContext());
+    	//restlet.getBlockAddress().add("127.0.0.1");
+    	//restlet.getBlockAddress().add("localhost");
+    	restlet.setNext(new Tracer(getContext()));
+    	return restlet;
+    	
  
     }
 }
