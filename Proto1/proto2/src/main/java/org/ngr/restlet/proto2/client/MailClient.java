@@ -1,14 +1,14 @@
 package org.ngr.restlet.proto2.client;
 
+import org.ngr.restlet.proto2.IRootResource;
 import org.restlet.resource.ClientResource;
 
 public class MailClient {
 
 	public static void main(String[] args) throws Exception {
-		ClientResource mailRoot = new ClientResource("http://localhost:8111/");
-		mailRoot.get().write(System.out);
-		//mailRoot.delete().write(System.out);
-		mailRoot.options().write(System.out);
+		IRootResource mailRoot = ClientResource.create("http://localhost:8111/",IRootResource.class);
+		String result = mailRoot.describe();
+		System.out.println(result);
 	}
 
 }

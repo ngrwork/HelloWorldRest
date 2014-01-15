@@ -1,11 +1,10 @@
 package org.ngr.restlet.proto2.server;
 
-import org.restlet.resource.Get;
-import org.restlet.resource.Options;
+import org.ngr.restlet.proto2.IRootResource;
 import org.restlet.resource.ResourceException;
 import org.restlet.resource.ServerResource;
 
-public class RootServerResource extends ServerResource {
+public class RootServerResource extends ServerResource implements IRootResource {
 
 	public RootServerResource() {
 		super();
@@ -29,13 +28,17 @@ public class RootServerResource extends ServerResource {
 	}
 
 	
-	@Get("txt")
+	/* (non-Javadoc)
+	 * @see org.ngr.restlet.proto2.server.IRootResource#represent()
+	 */
 	public String represent() {
 		getLogger().fine("The GET method2 of root resource was invoked");
 		return "This is the root resource";
 	}
 	
-	@Options("txt")
+	/* (non-Javadoc)
+	 * @see org.ngr.restlet.proto2.server.IRootResource#describe()
+	 */
 	public String describe() {
 		getLogger().fine("The OPTIONS method of root resource was invoked");
 		throw new RuntimeException("This is the root repource");
