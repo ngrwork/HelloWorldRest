@@ -1,4 +1,4 @@
-package org.ngr.restlet.proto3.server;
+package org.ngr.restlet.proto3.server.resource;
 
 import org.ngr.restlet.proto3.rest.resource.IAccountResource;
 import org.restlet.resource.ResourceException;

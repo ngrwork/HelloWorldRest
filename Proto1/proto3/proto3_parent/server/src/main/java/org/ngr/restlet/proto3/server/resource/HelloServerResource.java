@@ -1,4 +1,4 @@
-package org.ngr.restlet.proto3.server;
+package org.ngr.restlet.proto3.server.resource;
 
 import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;

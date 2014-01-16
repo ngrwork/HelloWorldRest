@@ -1,8 +1,11 @@
-package org.ngr.restlet.proto3.server;
+package org.ngr.restlet.proto3.application;
 
 import java.util.logging.Level;
 
 import org.ngr.restlet.proto3.server.filter.BlockerIP;
+import org.ngr.restlet.proto3.server.resource.AccountServerResource;
+import org.ngr.restlet.proto3.server.resource.AccountsServerResource;
+import org.ngr.restlet.proto3.server.resource.RootServerResource;
 import org.ngr.restlet.proto3.server.restlet.Tracer;
 import org.restlet.Application;
 import org.restlet.Restlet;

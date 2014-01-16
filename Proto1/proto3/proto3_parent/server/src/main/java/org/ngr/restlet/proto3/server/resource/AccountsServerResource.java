@@ -1,4 +1,4 @@
-package org.ngr.restlet.proto3.server;
+package org.ngr.restlet.proto3.server.resource;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
