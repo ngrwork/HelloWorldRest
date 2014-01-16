@@ -41,8 +41,10 @@ public class MailServerApplication extends Application
     	//blocker.getBlockAddress().add("localhost");
 		blocker.setNext(tracer);
     	Router router = new Router(getContext());
-    	router.attach("http://localhost:8111/", RootServerResource.class);
-		return router;
+    	router.attach("/", RootServerResource.class);
+    	router.attach("/accounts/", AccountServerResource.class);
+    	router.attach("/accounts/{accountID}", AccountServerResource.class);
+    	return router;
     	
  
     }
