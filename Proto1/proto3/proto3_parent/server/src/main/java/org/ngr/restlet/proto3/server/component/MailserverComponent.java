@@ -4,6 +4,7 @@ import java.util.logging.Level;
 
 import org.ngr.restlet.proto3.application.MailServerApplication;
 import org.restlet.Component;
+import org.restlet.Server;
 import org.restlet.data.Protocol;
 import org.restlet.engine.Engine;
 
@@ -15,7 +16,11 @@ public class MailserverComponent extends Component {
     	setOwner("MY FIRM");
     	setAuthor("ME");
     	Engine.setLogLevel(Level.FINEST);
-    	getServers().add(Protocol.HTTP, 8111);
+    	Server server =getServers().add(Protocol.HTTP, 8111);
+    	server.getContext().getParameters().set("tracing", "true");
+    	
+    	
+    	
     	getDefaultHost().attachDefault(new MailServerApplication());
     	
 	}
