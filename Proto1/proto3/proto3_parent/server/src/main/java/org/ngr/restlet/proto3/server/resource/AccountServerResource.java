@@ -11,7 +11,7 @@ public class AccountServerResource extends ServerResource implements IAccountRes
 	@Override
 	protected void doInit() throws ResourceException {
 		super.doInit();
-		this.accountId = Integer.parseInt(getAttribute("accouniId"));
+		this.accountId = Integer.parseInt(getAttribute("accountID"));
 	}
 	
 	public String represent() {
