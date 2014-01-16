@@ -7,6 +7,7 @@ import org.restlet.Component;
 import org.restlet.Server;
 import org.restlet.data.Protocol;
 import org.restlet.engine.Engine;
+import org.restlet.routing.VirtualHost;
 
 public class MailserverComponent extends Component {
 
@@ -19,9 +20,17 @@ public class MailserverComponent extends Component {
     	Server server =getServers().add(Protocol.HTTP, 8111);
     	server.getContext().getParameters().set("tracing", "true");
     	
+    	// Configure default virtual host
+    	VirtualHost host = getDefaultHost();
+    	host.setHostDomain("www\\.rmep\\.com|www\\.rmep\\.org|www\\.rmep\\.net");
+    	host.setServerAddress("1\\.2\\.3\\.10|1\\.2\\.3\\.20");
+    	host.setServerPort("80");
     	
+    	host.attachDefault(new MailServerApplication());
     	
-    	getDefaultHost().attachDefault(new MailServerApplication());
+    	getClients().add(Protocol.CLAP);
+    	getLogService().setLoggerName("MailServer.AccessLog");
+    	getLogService().setLogPropertiesRef("clap://system/log.properties");
     	
 	}
 
