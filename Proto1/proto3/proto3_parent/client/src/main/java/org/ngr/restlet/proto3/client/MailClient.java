@@ -7,7 +7,7 @@ import org.restlet.resource.ClientResource;
 public class MailClient {
 
 	public static void main(String[] args) throws Exception {
-		IRootResource mailRoot = ClientResource.create("http://localhost:8111/",IRootResource.class);
+		IRootResource mailRoot = ClientResource.create("http://localhost:8111/accounts",IRootResource.class);
 		String result = mailRoot.represent();
 		System.out.println(result);
 	}
