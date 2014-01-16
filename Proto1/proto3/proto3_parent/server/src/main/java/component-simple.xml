@@ -18,7 +18,7 @@
 
 	<defaultHost>
 		<attachDefault
-			targetClass="org.restlet.example.book.restlet.ch03.sec3.server.MailServerApplication" />
+			targetClass="org.ngr.restlet.proto3.application.MailServerApplication" />
 	</defaultHost>
 
 	<logService loggerName="MailServer.AccessLog"
